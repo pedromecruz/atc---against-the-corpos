@@ -1,0 +1,15 @@
+# Compilados Java
+*.class
+
+# Logs
+*.log
+
+# Pastas de build (Eclipse, IntelliJ, VSCode)
+bin/
+out/
+target/
+
+# Configurações específicas de IDE
+.vscode/
+.idea/
+*.iml
