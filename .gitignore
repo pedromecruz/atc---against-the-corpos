@@ -9,6 +9,11 @@ bin/
 out/
 target/
 
+# Configurações do Eclipse
+.settings/
+.project
+.classpath
+
 # Configurações específicas de IDE
 .vscode/
 .idea/
