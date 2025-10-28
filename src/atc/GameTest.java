@@ -86,37 +86,101 @@ public class GameTest {
 		
 		Enemy boss = new Enemy(250); //vida do boss em 250
 		
-		do { //loop de combate por turnos
-			System.out.println("O que P2 fará?");
-			System.out.print("1. Ataque \n"
-					+ "2. Preparar esquiva \n"
-					+ "3. Preparar contra-ataque \n"
-					+ " \n"
-					+ "R: ");
-			option = input.nextInt();
-			
-			while (option > 3 && option < 1) { //verificador de opção valida
-				System.out.println("Insira uma opção válida.");
-				option = input.nextInt();
-			}
-			
-			switch (option) {
-			
-			}
-			
-			
-		} while (player.hp >= 1 && boss.hp >= 1); //fim do loop de combate
-		
-		
-		
-		enemyOption = generator.nextInt(6);
-		if (enemyOption == 0) {
-			enemyOption+=1;
-		}
-		
-		switch (enemyOption) {
-		case 1: //
-		}
+		do {
+		    enemyTurn = 1; // no início do loop, o inimigo pode agir
+
+		    System.out.println("O que P2 fará?");
+		    System.out.println("1. Ataque");
+		    System.out.println("2. Esquiva");
+		    System.out.println("3. Contra-ataque");
+		    System.out.print("Escolha sua ação: ");
+		    option = input.nextInt();
+
+		    while (option < 1 || option > 3) {
+		        System.out.println("Insira uma opção válida.");
+		        option = input.nextInt();
+		    }
+
+		    switch (option) {
+		        case 1:
+		            // ⚔️ Ataque normal
+		            int atkRoll = player.getAttack(); // o método retorna um valor entre 1 e 20, por exemplo
+		            System.out.println("Jogador ataca! (Rolagem: " + atkRoll + ")");
+
+		            if (atkRoll == 20) { // crítico
+		                int danoCritico = player.attack * 2;
+		                boss.hp -= danoCritico;
+		                enemyTurn -= 2;
+		                System.out.println("💥 Acerto CRÍTICO! Dano em dobro: " + danoCritico);
+		            } else if (atkRoll == 1) { // falha crítica
+		                System.out.println("❌ Falha crítica! O inimigo contra-ataca!");
+		                player.hp -= boss.attack;
+		                System.out.println("P2 recebeu " + boss.attack + " de dano!");
+		            } else {
+		                boss.hp -= player.attack;
+		                System.out.println("O inimigo recebeu " + player.attack + " de dano!");
+		            }
+		            break;
+
+		        case 2:
+		            // 🌀 Esquiva
+		            int dodgeRoll = player.getDodge();
+		            System.out.println("Jogador tenta esquivar! (Rolagem: " + dodgeRoll + ")");
+
+		            if (dodgeRoll == 20) { // esquiva crítica
+		                System.out.println("💨 Esquiva PERFEITA! O inimigo perde 2 turnos!");
+		                enemyTurn -= 2;
+		            } else if (dodgeRoll == 1) { // falha crítica
+		                System.out.println("❌ Falha crítica! O inimigo acerta o jogador!");
+		                player.hp -= boss.attack;
+		                System.out.println("P2 recebeu " + boss.attack + " de dano!");
+		            } else if (dodgeRoll > boss.attack) {
+		                System.out.println("✅ Esquiva bem-sucedida! O inimigo perde o próximo turno.");
+		                enemyTurn = 0;
+		            } else {
+		                System.out.println("💢 Esquiva falhou! O inimigo acerta o ataque.");
+		                player.hp -= boss.attack;
+		                System.out.println("P2 recebeu " + boss.attack + " de dano!");
+		            }
+		            break;
+
+		        case 3:
+		            // ⚡ Contra-ataque
+		            int counterRoll = player.getCounterAttack();
+		            System.out.println("Jogador tenta um contra-ataque! (Rolagem: " + counterRoll + ")");
+
+		            if (counterRoll == 20) { // crítico
+		                System.out.println("💥 Contra-ataque CRÍTICO! O jogador acerta DUAS vezes!");
+		                for (int i = 0; i < 2; i++) {
+		                    int dano = generator.nextInt(33) + 1;
+		                    boss.hp -= dano;
+		                    System.out.println("Golpe #" + (i + 1) + ": causou " + dano + " de dano!");
+		                }
+		                enemyTurn -= 2;
+		            } else if (counterRoll == 1) { // falha crítica
+		                System.out.println("❌ Falha crítica! O inimigo aproveita e acerta o jogador!");
+		                player.hp -= boss.attack;
+		                System.out.println("P2 recebeu " + boss.attack + " de dano!");
+		            } else if (counterRoll > boss.attack) {
+		                int dano = generator.nextInt(33) + 1;
+		                System.out.println("✅ Contra-ataque bem-sucedido! Dano: " + dano);
+		                boss.hp -= dano;
+		                enemyTurn = 0;
+		            } else {
+		                System.out.println("💢 O inimigo foi mais rápido! O jogador leva o ataque.");
+		                player.hp -= boss.attack;
+		                System.out.println("P2 recebeu " + boss.attack + " de dano!");
+		            }
+		            break;
+		    }
+
+		    // Exibe status ao fim da ação
+		    System.out.println("\n[STATUS]");
+		    System.out.println("P2 HP: " + player.hp);
+		    System.out.println("Boss HP: " + boss.hp);
+		    System.out.println("EnemyTurn: " + enemyTurn);
+
+		} while (player.hp > 0 && boss.hp > 0);
 		
 	}
 
