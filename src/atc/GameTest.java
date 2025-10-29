@@ -78,110 +78,116 @@ public class GameTest {
 		System.out.println("Seja bem vindo ao nosso jogo. ");
 		System.out.println(" ");
 
-		// __________________________________________________________TESTANDO COMBATE
-		
+		// __________________________________________________________COMBATE COM BOSS
+
 		int tempBuff;
-		int enemyTurn;
+		int enemyTurn = 0;
 		int enemyOption;
-		
-		Enemy boss = new Enemy(250); //vida do boss em 250
-		
+
+		Enemy boss = new Enemy(250); // vida do boss em 250
+		boss.status = "Normal";
+
 		do {
-		    enemyTurn = 1; // no início do loop, o inimigo pode agir
+			enemyTurn += 1; // no início do loop, o inimigo pode agir
 
-		    System.out.println("O que P2 fará?");
-		    System.out.println("1. Ataque");
-		    System.out.println("2. Esquiva");
-		    System.out.println("3. Contra-ataque");
-		    System.out.print("Escolha sua ação: ");
-		    option = input.nextInt();
+			System.out.println("O que P2 fará?");
+			System.out.println("1. Ataque");
+			System.out.println("2. Esquiva");
+			System.out.println("3. Contra-ataque");
+			System.out.print("Escolha sua ação: ");
+			option = input.nextInt();
 
-		    while (option < 1 || option > 3) {
-		        System.out.println("Insira uma opção válida.");
-		        option = input.nextInt();
-		    }
+			while (option < 1 || option > 3) {
+				System.out.println("Insira uma opção válida.");
+				option = input.nextInt();
+			}
 
-		    switch (option) {
-		        case 1:
-		            // ⚔️ Ataque normal
-		            int atkRoll = player.getAttack(); // o método retorna um valor entre 1 e 20, por exemplo
-		            System.out.println("Jogador ataca! (Rolagem: " + atkRoll + ")");
+			switch (option) {
+			case 1: // ataque comum
+				player.hit = player.getAttack(); // o método retorna um valor entre 1 e 20
 
-		            if (atkRoll == 20) { // crítico
-		                int danoCritico = player.attack * 2;
-		                boss.hp -= danoCritico;
-		                enemyTurn -= 2;
-		                System.out.println("💥 Acerto CRÍTICO! Dano em dobro: " + danoCritico);
-		            } else if (atkRoll == 1) { // falha crítica
-		                System.out.println("❌ Falha crítica! O inimigo contra-ataca!");
-		                player.hp -= boss.attack;
-		                System.out.println("P2 recebeu " + boss.attack + " de dano!");
-		            } else {
-		                boss.hp -= player.attack;
-		                System.out.println("O inimigo recebeu " + player.attack + " de dano!");
-		            }
-		            break;
+				if (player.hit == 20) { // acerto crítico
+					boss.hp -= (player.getDamage() * 2);
+					enemyTurn -= 2;
+					System.out.println("P2 consegue mirar em uma falha na cyber-armadura d'O Chefe. Acerto crítico.");
 
-		        case 2:
-		            // 🌀 Esquiva
-		            int dodgeRoll = player.getDodge();
-		            System.out.println("Jogador tenta esquivar! (Rolagem: " + dodgeRoll + ")");
+				} else if (player.hit == 1) { // falha crítica
+					System.out.println("O pé de P2 pisa milimetros no lugar errado.");
+					System.out.println("—Você é um clone antigo, P2. Ultrapassado. Você erra demais!");
+					System.out.println("O Chefe retorna um ataque no tórax de P2 \n" + " ");
+					player.hp -= boss.getAttack();
 
-		            if (dodgeRoll == 20) { // esquiva crítica
-		                System.out.println("💨 Esquiva PERFEITA! O inimigo perde 2 turnos!");
-		                enemyTurn -= 2;
-		            } else if (dodgeRoll == 1) { // falha crítica
-		                System.out.println("❌ Falha crítica! O inimigo acerta o jogador!");
-		                player.hp -= boss.attack;
-		                System.out.println("P2 recebeu " + boss.attack + " de dano!");
-		            } else if (dodgeRoll > boss.attack) {
-		                System.out.println("✅ Esquiva bem-sucedida! O inimigo perde o próximo turno.");
-		                enemyTurn = 0;
-		            } else {
-		                System.out.println("💢 Esquiva falhou! O inimigo acerta o ataque.");
-		                player.hp -= boss.attack;
-		                System.out.println("P2 recebeu " + boss.attack + " de dano!");
-		            }
-		            break;
+				} else { // acerto comum
+					boss.hp -= player.getDamage();
+					System.out.println("P2 consegue acertar um sólido soco na costela d'O Chefe. \n");
+				}
+				break;
 
-		        case 3:
-		            // ⚡ Contra-ataque
-		            int counterRoll = player.getCounterAttack();
-		            System.out.println("Jogador tenta um contra-ataque! (Rolagem: " + counterRoll + ")");
+			case 2: // esquiva
+				player.dodge = player.getDodge();
+				if (player.dodge == 20) { // esquiva crítica
+					System.out.println(
+							"P2 atrai O Chefe para um ataque... e consegue um passo perfeito. O Chefe está desbalanceado.");
+					enemyTurn = -2;
 
-		            if (counterRoll == 20) { // crítico
-		                System.out.println("💥 Contra-ataque CRÍTICO! O jogador acerta DUAS vezes!");
-		                for (int i = 0; i < 2; i++) {
-		                    int dano = generator.nextInt(33) + 1;
-		                    boss.hp -= dano;
-		                    System.out.println("Golpe #" + (i + 1) + ": causou " + dano + " de dano!");
-		                }
-		                enemyTurn -= 2;
-		            } else if (counterRoll == 1) { // falha crítica
-		                System.out.println("❌ Falha crítica! O inimigo aproveita e acerta o jogador!");
-		                player.hp -= boss.attack;
-		                System.out.println("P2 recebeu " + boss.attack + " de dano!");
-		            } else if (counterRoll > boss.attack) {
-		                int dano = generator.nextInt(33) + 1;
-		                System.out.println("✅ Contra-ataque bem-sucedido! Dano: " + dano);
-		                boss.hp -= dano;
-		                enemyTurn = 0;
-		            } else {
-		                System.out.println("💢 O inimigo foi mais rápido! O jogador leva o ataque.");
-		                player.hp -= boss.attack;
-		                System.out.println("P2 recebeu " + boss.attack + " de dano!");
-		            }
-		            break;
-		    }
+				} else if (player.dodge == 1) { // falha crítica
+					System.out.println(
+							"P2 atrai O Chefe para um ataque... mas erra o passo. Erra de forma terrível. O chefe tem uma chance clara de contra-ataque, e não falha.");
+					player.hp -= boss.getDamage();
 
-		    // Exibe status ao fim da ação
-		    System.out.println("\n[STATUS]");
-		    System.out.println("P2 HP: " + player.hp);
-		    System.out.println("Boss HP: " + boss.hp);
-		    System.out.println("EnemyTurn: " + enemyTurn);
+				} else if (player.dodge > boss.getAttack()) { // esquiva comum
+					System.out.println(
+							"P2 atrai O Chefe para um ataque... e consegue um bom passo. O Chefe abre uma oportunidade. \n"
+									+ " ");
+					enemyTurn = 0;
+
+				} else { // erro comum
+					System.out.println(
+							"P2 atrai O Chefe para um ataque... mas erra o passo. Isso abre uma pequena oportunidade, que O Chefe aproveita. ");
+					player.hp -= (boss.getDamage() / 2);
+				}
+				break;
+
+			case 3: // Contra-ataque
+				player.counter = player.getCounter();
+
+				if (player.counter == 20) { // acerto crítico
+					System.out.println(
+							"P2 atrai O Chefe para um ataque... e consegue um passo ofensivo perfeito. Com isso, desfere 2 fortes golpes n'O Chefe. Isso o desbalancea. \n"
+									+ " ");
+					boss.hp -= player.getDamage();
+					boss.hp -= player.getDamage();
+					enemyTurn = -1;
+
+				} else if (player.counter == 1) { // falha crítica
+					System.out.println("P2 atrai O Chefe para um ataque... mas perde totalmente o passo ofensivo. Uma ótima oportunidade se apresenta, e O Chefe não desperdiça. \n"
+							+ " ");
+					player.hp -= boss.getDamage();
+
+				} else if (player.counter > boss.getAttack()) { //contra-ataque comum
+					System.out.println("P2 atrai O Chefe para um ataque... e consegue um passo ofensivo perfeito. Com isso, desfere um limpo soco n'O Chefe. Isso o desbalancea.");
+					boss.hp -= player.getDamage();
+					enemyTurn = -1;
+					
+				} else { //erro comum
+					System.out.println("P2 atrai O Chefe para um ataque... mas erra o passo ofensivo. Isso abre uma pequena oportunidade, que O Chefe aproveita. ");
+					player.hp -= (boss.getDamage() /2);
+				}
+				break;
+			}
+
+			System.out.println("P2 está com " + player.hp + " de vida.");
+			System.out.println("O Chefe está com " + boss.hp + " de vida. \n" + " ");
+//_________________________________ ENCERRAMENTO DE TURNO 
+
+			if (enemyTurn > 0) { // ação do chefe
+
+			} else { // chefe perdeu ação
+				System.out.println("O Chefe está usando suas energias para se recuperar. \n" + " ");
+			}
 
 		} while (player.hp > 0 && boss.hp > 0);
-		
+
 	}
 
 }
