@@ -57,22 +57,6 @@ public class Enemy {
 			damage = 6;
 		}
 
-		if (status.startsWith("F")) { // se está com buff de fortificado
-			damage *= 2;
-		}
-
-		return damage;
-	}
-
-	int getElectricDamage() {
-		// dano máximo: 13
-		damage = generator.nextInt(14);
-
-		// calcula o dano mínimo: 3
-		if (damage < 3) {
-			damage = 3;
-		}
-
 		return damage;
 	}
 
@@ -88,7 +72,6 @@ public class Enemy {
 		} else if (dodge == 20) {
 			return dodge;
 		}
-
 		return dodge;
 	}
 
@@ -99,13 +82,33 @@ public class Enemy {
 		if (counter == 0) {
 			counter += 1;
 			return counter;
-
 			// acerto critico
 		} else if (dodge == 20) {
 			return dodge;
 		}
-
 		return counter;
 	}
 
+	void setFortifiedStatus() { // define o status de FORTIFICADO
+		status = "FORTIFIED";
+		System.out.println(
+				"Os braços metálicos d'O Chefe rasgam seu terno. Eles dobram de largura e, claramente, de poder.");
+		System.out.println("Agora você conhecerá a dor, P2.");
+	}
+
+	void setElectricStatus() { // define a armadura elétrica
+		status = "ELECTRIC";
+		System.out.println("A pele metálica d'O Chefe se ilumina com um leve brilho azul.");
+		System.out.println("Recomendo que não me toque, P2.");
+	}
+
+	int getElectricDamage() {
+		// dano máximo: 13
+		damage = generator.nextInt(14);
+		// calcula o dano mínimo: 3
+		if (damage < 3) {
+			damage = 3;
+		}
+		return damage;
+	}
 }
