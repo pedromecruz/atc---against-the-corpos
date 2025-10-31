@@ -199,8 +199,7 @@ public class GameTest {
 
 				if (boss.hp != bossTempHP && boss.status.equals("ELECTRIC")) { // aplica o efeito da armadura elétrica
 					player.hp -= boss.getElectricDamage();
-					System.out.println(
-							"Após o ataque, P2 sofreu um choque elétrico da armadura d'O Chefe. \n" + " ");
+					System.out.println("Após o ataque, P2 sofreu um choque elétrico da armadura d'O Chefe. \n" + " ");
 				}
 
 				if (player.hp != tempHP && boss.status.equals("FORTIFIED")) { // aplica o efeito do fortalecimento do
@@ -251,28 +250,74 @@ public class GameTest {
 					boss.hit = boss.getAttack();
 					if (boss.hit == 20) { // acerto critico
 						System.out.println("O golpe d'O Chefe atravessa o ar como um relâmpago.\r\n"
-								+ "O impacto é seco, brutal — P2 mal tem tempo de reagir. \n"
-								+ " ");
+								+ "O impacto é seco, brutal — P2 mal tem tempo de reagir. \n" + " ");
 						player.hp -= (boss.getDamage() * 2);
 
 					} else if (boss.hit == 1) { // erro critico
 						System.out.println("O Chefe ataca com força demais e perde o equilíbrio.\r\n"
 								+ "Seu soco corta o ar e raspa no chão, abrindo uma brecha perigosa.");
-						System.out.println("P2 contra-ataca com precisão. \n"
-								+ "");
+						System.out.println("P2 contra-ataca com precisão. \n" + "");
 						boss.hp = player.getDamage();
-						
-					} else if (boss.hit >= player.defense) { //acerto comum
+
+					} else if (boss.hit >= player.defense) { // acerto comum
 						System.out.println("O Chefe golpeia o ombro de P2 — um golpe limpo, preciso.\r\n"
 								+ "P2 sente dor enquanto o olhar do Chefe permanece frio.\n");
 						player.hp -= boss.getDamage();
-						
-					} else { //erro comum
+
+					} else { // erro comum
 						System.out.println("O soco passa a centímetros do alvo, cortando apenas o vento.\r\n"
 								+ "P2 recua a tempo, e o Chefe o observa com desprezo contido. \n");
 					}
 					break;
-					
+
+				case 4: // ação de esquiva
+					boss.dodge = boss.getDodge();
+					if (boss.dodge == 20) { // esquiva acerto critico
+						System.out.println("O Chefe se move antes mesmo do ataque começar.\r\n"
+								+ "A esquiva é perfeita — um desvio fluido, quase coreografado. \n"
+								+ "“Eu te conheço melhor do que você mesmo.”");
+						playerTurn = -2;
+					} else if (boss.dodge == 1) { // erro critico
+						System.out.println("O Chefe tenta prever o movimento, mas se antecipa demais.\r\n"
+								+ "Perde o tempo — e o punho de P2 quase o atravessa.");
+						boss.hp = player.getDamage();
+
+					} else if (boss.dodge > player.hit) { // acerto comum
+						System.out.println("Ele gira o corpo e o golpe passa de raspão.\r\n"
+								+ "A manobra desestabiliza P2, forçando-o a perder o ritmo.");
+						playerTurn = -1;
+
+					} else { // erro comum
+						System.out.println("A esquiva falha por um instante.\r\n"
+								+ "O ataque de P2 acerta o flanco do Chefe, sem grandes estragos.");
+						boss.hp -= (player.getDamage() / 2);
+					}
+					break;
+
+				case 5:
+					boss.counter = boss.getCounter();
+					if (boss.counter == 20) { // acerto critico
+						System.out.println("P2 ataca — mas o Chefe desaparece da linha de visão.\r\n"
+								+ "Em um movimento preciso, esquiva e devolve dois golpes seguidos.");
+						player.hp -= boss.getDamage();
+						player.hp -= boss.getDamage();
+						playerTurn = -1;
+
+					} else if (boss.counter == 1) { // erro critico
+						System.out.println("O Chefe tenta uma nova esquiva, mas P2 muda o ritmo.\r\n"
+								+ "O golpe falha, e a guarda se abre completamente.");
+						System.out.println("P2 golpeia com força. ");
+						boss.hp -= player.getDamage();
+
+					} else if (boss.counter > player.hit) { // acerto comum
+						System.out.println("O Chefe finge vulnerabilidade, e P2 morde a isca.\r\n"
+								+ "Um contra-ataque rápido o acerta no flanco.");
+						player.hp -= boss.getDamage();
+					} else { // erro comum
+						System.out.println("O Chefe tenta induzir o ataque, mas P2 o lê por completo.\r\n"
+								+ "O punho do clone atinge primeiro.");
+						boss.hp -= (player.getDamage() / 2);
+					}
 				}
 
 				if (boss.hp != bossTempHP && boss.status.equals("ELECTRIC")) { // aplica o efeito da armadura elétrica
