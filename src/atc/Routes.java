@@ -152,6 +152,13 @@ public class Routes {
 			Enemy boss = new Enemy (200);
 			Battle.bossBattle(player, boss, input, textSpeed);
 		}
-	}
+		
+		if (player.hp>0) {
+		TextUtils.slowPrint(GameTexts.act5Final(), textSpeed);	
+		} else {
+			
+		}
+		
+		}
 
 }

@@ -54,6 +54,13 @@ public class Battle {
 			GameConfigs.clearConsole();
 
 		} while (player.hp > 0 && echo.hp > 0);
+		
+		if (player.hp >=1) {
+			TextUtils.slowPrint(GameTexts.act3Victory(), textSpeed);
+		} else {
+			TextUtils.slowPrint(GameTexts.act3Death(), textSpeed);
+			System.exit(0);
+		}
 
 	}
 
@@ -99,7 +106,7 @@ public class Battle {
 		} while (player.hp > 0 && boss.hp > 0);
 
 		if (player.hp <= 0) {
-			TextUtils.slowPrint(GameTexts.act3Death(), textSpeed);
+			TextUtils.slowPrint(GameTexts.act5Final(), textSpeed);
 			System.exit(0);
 		} else {
 			TextUtils.slowPrint(GameTexts.act3Victory(), textSpeed);

@@ -304,7 +304,7 @@ public class GameTexts {
 				======================================
 
 				O som metálico das máquinas de ventilação ecoa como um rugido distante.
-				Luzes piscam, e por um instante, o reflexo de algo humanoide aparece em um dos monitores — 
+				Luzes piscam, e por um instante, o reflexo de algo humanoide aparece em um dos monitores —
 				e desaparece logo depois.
 				O próximo passo é o mais perigoso.
 				A partir dali, o sistema já sabe que ele está dentro.
@@ -742,48 +742,105 @@ public class GameTexts {
 	public static String act5Final() {
 		return """
 
-				O Chefe cai diante de P2, corpo rígido, circuitos piscando nos últimos instantes de vida. 
+				O Chefe cai diante de P2, corpo rígido, circuitos piscando nos últimos instantes de vida.
 				Seus olhos brilham uma última vez antes de se apagarem.
 
-				“Eu… facilitei todo o seu caminho até aqui…”, sua voz metálica ecoa pela sala. 
+				“Eu… facilitei todo o seu caminho até aqui…”, sua voz metálica ecoa pela sala.
 				“Mas… você… conseguiu… derrotar-me. Esse protótipo… é uma cópia perfeita de mim…”
 
 				Ele deixa escapar um último suspiro e pede, quase implorando: “Viva… bem… seus quatro dias restantes.”
 
 				Com precisão, P2 torce o pescoço do Chefe. O estalo seco ressoa pelo ambiente. O Chefe morreu de forma definitiva.
 				Ainda ofegante, P2 recebe uma atualização de sua missão, diretamente no seu visor:
-				
+
 				[EXTRAIR PLANOS]
-				
-				No bolso de sua calça, o microchip necessário para invadir o computador do Chefe. Ele o conecta. Instantes depois, 
-				dados começam a fluir, transferindo informações sensíveis 
+
+				No bolso de sua calça, o microchip necessário para invadir o computador do Chefe. Ele o conecta. Instantes depois,
+				dados começam a fluir, transferindo informações sensíveis
 				para a nuvem.
 
-				P2 procura uma saída, mas o prédio parece engolí-lo: todas as portas e janelas lacradas. A tensão cresce a cada 
+				P2 procura uma saída, mas o prédio parece engolí-lo: todas as portas e janelas lacradas. A tensão cresce a cada
 				segundo… até que, finalmente, uma porta se abre, iluminada por uma luz vermelha pulsante.
 
 				“Saída de emergência”, pensa P2, percebendo que sua invasão ao microchip alterou o sistema.
 
-				Ele entra, desce pelo elevador silencioso e emerge por uma porta lateral quase invisível, saindo sem ser notado. 
+				Ele entra, desce pelo elevador silencioso e emerge por uma porta lateral quase invisível, saindo sem ser notado.
 				A cidade abaixo brilha indiferente à sua luta e à morte do Chefe.
 
 				De volta ao prédio onde nasceu, P2 encara a tela cinza. Raiva e confusão o dominam.
 
 				“Quem me criou? Por que fui projetado como uma cópia perfeita apenas para ser descartado?” — pergunta, a voz cortando o silêncio.
 				“Tudo que fiz… todo risco que corri… era apenas parte de um plano maior? Para alimentar interesses que nunca seriam meus?”
-				“Para onde vão essas informações? Quem realmente controla esse poder? A Aqua Régia? Ou será apenas transferido para outra 
+				“Para onde vão essas informações? Quem realmente controla esse poder? A Aqua Régia? Ou será apenas transferido para outra
 				corporação sem escrúpulos, enquanto eu morro sem ter voz?”
 
-				Antes que consiga respostas, uma onda de choque elétrico atravessa seu cérebro. P2 cai no chão, convulsionando. A realidade se impõe: 
-				sua morte estava programada desde o nascimento, um traidor destinado a ser descartado após cumprir o papel. O ódio pelo corporativismo, 
+				Antes que consiga respostas, uma onda de choque elétrico atravessa seu cérebro. P2 cai no chão, convulsionando. A realidade se impõe:
+				sua morte estava programada desde o nascimento, um traidor destinado a ser descartado após cumprir o papel. O ódio pelo corporativismo,
 				pelo esquema do qual sempre foi peça, fermenta em seu peito.
 
 				“Missão cumprida, P2. Agradecemos o serviço prestado.”
 
-				O corpo de P2 cai imóvel. A tela cinza permanece silenciosa. Lá fora, a cidade continua a pulsar, indiferente ao destino do 
+				O corpo de P2 cai imóvel. A tela cinza permanece silenciosa. Lá fora, a cidade continua a pulsar, indiferente ao destino do
 				protótipo perfeito, enquanto o ódio e a traição permanecem como lembrança eterna.
-				
+
 				[FINAL 2 — O Chefe morre. P2 é eliminado.]
+				""";
+	}
+
+	public static String act5BadFinal() {
+		return """
+
+				O silêncio tomou o ambiente. O som do metal se retorcendo havia cessado — e com ele, também o fôlego de P2.
+				O Chefe observava o corpo imóvel diante de si, o olhar frio, impassível.
+
+				Por um breve instante, ele pareceu hesitar.
+				Aquele ser diante dele era sua própria imagem, moldada em carne sintética, músculos precisos e uma mente construída a partir 
+				de fragmentos de sua própria consciência.
+				Era... ele mesmo. Uma cópia perfeita — imperfeita apenas pelo destino que o aguardava.
+
+				“Misericórdia...”, murmurou O Chefe, quase sem perceber.
+
+				Sua mão firme pousou sobre o pescoço de P2. Um único movimento. Rápido. Silencioso.
+				O som seco ecoou pelo laboratório.
+
+				P2 não teve tempo para sentir dor. Sua existência foi encerrada com a mesma frieza com que havia sido criada — e, em um gesto 
+				quase contraditório, o Chefe acreditou ter lhe feito um favor.
+
+				“Não há sentido em lhe dar respostas, cópia.”
+				“Respostas não trazem propósito. Só ruína.”
+
+				Por um momento, o Chefe desviou o olhar para o reflexo trincado de um espelho próximo.
+				Nos cacos, ele viu dezenas de si mesmo — rostos idênticos, estáticos, multiplicados.
+				Cada reflexo parecia observá-lo com a mesma indiferença que ele aprendera a cultivar.
+
+				E então, a verdade o atingiu como um golpe: ele não sabia mais quem o estava replicando.
+				Havia tantas corporações, tantos grupos famintos por poder, por controle... e agora, sabiam de sua maior fraqueza:
+				a própria imagem.
+
+				“Demônios!" 
+
+				O Chefe cerrou os punhos. O sangue escorreu por entre os dedos.
+				A ideia de ser multiplicado — reduzido a uma cópia, a uma ferramenta — o consumia.
+				Mas algo dentro dele se torceu, dando origem a um novo plano.
+
+				“Se eles criam cópias de mim...”
+				“... então eu também criarei as minhas.”
+
+				A decisão nascia entre a raiva e a loucura.
+				Ele abriria sua própria linha de clones — um exército de versões controladas, moldadas apenas para obedecer.
+				Defesa? Talvez.
+				Um ato de autopreservação... ou a semente da própria destruição.
+				Ele conhecia a própria ganância.
+
+				Enquanto as luzes do laboratório piscavam e o corpo de P2 era lentamente engolido pela sombra, o Chefe fitava o vazio.
+				Sua mente já projetava a próxima geração.
+				Não para substituí-lo — mas para refletir seu domínio.
+
+				E, no fundo, ele sabia:
+				em algum momento, um deles o mataria também.
+				
+				[FINAL 3 — O Chefe vive. P2 é eliminado.]
+
 				""";
 	}
 

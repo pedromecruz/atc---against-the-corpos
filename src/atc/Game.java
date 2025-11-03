@@ -25,8 +25,7 @@ public class Game {
 		textSpeed = GameConfigs.gameSpeed(textSpeed, input);
 
 		// SELECAO DE DIFICULDADE
-		String difficulty = GameConfigs.gameDifficulty(player, input, tempo);
-		System.out.println("\n" + "DIFICULDADE ESCOLHIDA: " + difficulty + "\n");
+		tempo = GameConfigs.gameDifficulty(player, input, tempo);
 		GameConfigs.clearConsole();
 
 		// FIM DA CONFIGURACAO

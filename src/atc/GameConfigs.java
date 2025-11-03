@@ -37,7 +37,7 @@ public class GameConfigs {
 
 	}
 
-	public static String gameDifficulty(Player player, Scanner input, int tempo) {
+	public static int gameDifficulty(Player player, Scanner input, int tempo) {
 
 		System.out.println("Selecione a dificuldade: \n" + "Fácil \n" + "Normal \n" + "Dificil");
 		System.out.print("R: ");
@@ -65,8 +65,10 @@ public class GameConfigs {
 				difficulty = input.nextLine().toUpperCase();
 			}
 		}
+		
+		System.out.println("\n" + "DIFICULDADE ESCOLHIDA: " + difficulty + "\n");
 
-		return difficulty;
+		return tempo;
 
 	}
 
