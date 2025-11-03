@@ -5,12 +5,12 @@ import java.util.Random;
 public class Enemy {
 
 	int hp; // vida do inimigo
-	String status; // status do inimigo
+	String status = "NORMAL"; // status do inimigo
 	int hit; // acerto ataque
 	int dodge; // acerto esquiva
 	int counter; // acerto contra ataque
 	int damage; // dano
-	int defense; // defesa do jogador
+	int defense; // defesa do inimigo
 
 	Random generator = new Random();
 
