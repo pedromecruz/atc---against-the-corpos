@@ -13,7 +13,8 @@ public class GameConfigs {
 		String textSpeedOption;
 
 		System.out.print("Selecione a velocidade do texto: (Acredite, o jogo tem bastante texto)\n" + "Normal \n"
-				+ "Rápido (recomendado para uma primeira jogatina) \n" + "Muito rápido \n" + "Instantâneo (recomendado para testes) \n");
+				+ "Rápido (recomendado para uma primeira jogatina) \n" + "Muito rápido \n"
+				+ "Instantâneo (recomendado para testes) \n");
 
 		do {
 			System.out.print("R: ");
@@ -41,33 +42,32 @@ public class GameConfigs {
 
 		System.out.println("Selecione a dificuldade: \n" + "Fácil \n" + "Normal \n" + "Dificil");
 		System.out.print("R: ");
-		String difficulty = "";
+		String difficulty = null;
 
-		while (tempo == 0) {
-			
-			difficulty = input.nextLine().toUpperCase();
+		while (difficulty == null) {
+	
+			String response = input.nextLine().toUpperCase();
 
-			if (difficulty.startsWith("F")) {
+			if (response.startsWith("F")) {
 				player.hp = 160; // mais vida de jogador
 				tempo = 5; // mais tempo
 				difficulty = "Fácil";
 
-			} else if (difficulty.startsWith("N")) { // define a dificuldade para normal
+			} else if (response.startsWith("N")) { // define a dificuldade para normal
 				player.hp = 140; // vida de jogador padrao
 				tempo = 4; // tempo padrao
 				difficulty = "Normal";
 
-			} else if (difficulty.startsWith("D")) { // define a dificuldade para dificil
+			} else if (response.startsWith("D")) { // define a dificuldade para dificil
 				player.hp = 120; // menos vida de jogador
 				tempo = 3; // menos tempo
 				difficulty = "Difícil";
 			} else {
 				System.out.println("Insira uma dificuldade válida!");
 				System.out.print("R: \n");
-				difficulty = input.nextLine().toUpperCase();
 			}
 		}
-		
+
 		System.out.println("\n" + "DIFICULDADE ESCOLHIDA: " + difficulty + "\n");
 
 		return tempo;

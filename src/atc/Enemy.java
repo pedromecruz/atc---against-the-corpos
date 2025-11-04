@@ -11,6 +11,7 @@ public class Enemy {
 	int counter; // acerto contra ataque
 	int damage; // dano
 	int defense; // defesa do inimigo
+	int tempBuff; // turnos de buff temporario
 
 	Random generator = new Random();
 
@@ -102,6 +103,14 @@ public class Enemy {
 		System.out.println("Recomendo que não me toque, P2.");
 	}
 
+	void setTempBuff(int tempbuff) {
+		this.tempBuff = tempBuff;
+	}
+
+	int getTempBuff() {
+		return tempBuff;
+	}
+
 	int getElectricDamage() {
 		// dano máximo: 13
 		damage = generator.nextInt(14);
@@ -110,5 +119,14 @@ public class Enemy {
 			damage = 3;
 		}
 		return damage;
+	}
+
+	public void updateStatus() {
+		if (tempBuff > 0) {
+			tempBuff--;
+		} else if (!status.equals("NORMAL")) {
+			status = "NORMAL";
+			System.out.println("O corpo d'O Chefe voltou ao normal.\n");
+		}
 	}
 }

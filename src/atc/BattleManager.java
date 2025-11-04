@@ -10,6 +10,9 @@ public class BattleManager {
 
 	public static int playerActionFinalBattle(Player player, Enemy boss, int enemyTurn, Scanner input, int tempHP,
 			int bossTempHP, int textSpeed) {
+		
+		tempHP = player.hp;
+		bossTempHP = boss.hp;
 
 		TextUtils.slowPrint("\n" + "ESCOLHA", textSpeed);
 		TextUtils.slowPrint("1. ATAQUE", textSpeed);
@@ -128,6 +131,9 @@ public class BattleManager {
 	public static int bossAction(Player player, Enemy boss, int tempBuff, int enemyTurn, int playerTurn,
 			Random generator, int bossTempHP, int tempHP, int textSpeed) {
 
+		tempHP = player.hp;
+		bossTempHP = boss.hp;
+		
 		int enemyOption = generator.nextInt(6);
 
 		if (enemyOption == 0) {
@@ -139,7 +145,7 @@ public class BattleManager {
 		case 1: // define o BUFF ELETRICO
 			if (tempBuff < 1) {
 				boss.setElectricStatus();
-				tempBuff = 2;
+				boss.setTempBuff(3);
 				break;
 			} else { // irá para o próximo case
 			}
@@ -147,7 +153,7 @@ public class BattleManager {
 		case 2: // DEFINE O BUFF FORTIFICADO
 			if (tempBuff < 1) {
 				boss.setFortifiedStatus();
-				tempBuff = 2;
+				boss.setTempBuff(3);
 				break;
 			} else { // irá para o próximo case
 			}
