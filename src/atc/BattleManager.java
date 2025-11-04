@@ -128,7 +128,7 @@ public class BattleManager {
 
 	}
 
-	public static int bossAction(Player player, Enemy boss, int tempBuff, int enemyTurn, int playerTurn,
+	public static int bossAction(Player player, Enemy boss, int enemyTurn, int playerTurn,
 			Random generator, int bossTempHP, int tempHP, int textSpeed) {
 
 		tempHP = player.hp;
@@ -143,7 +143,7 @@ public class BattleManager {
 		switch (enemyOption) {
 
 		case 1: // define o BUFF ELETRICO
-			if (tempBuff < 1) {
+			if (boss.tempBuff < 1) {
 				boss.setElectricStatus();
 				boss.setTempBuff(3);
 				break;
@@ -151,7 +151,7 @@ public class BattleManager {
 			}
 
 		case 2: // DEFINE O BUFF FORTIFICADO
-			if (tempBuff < 1) {
+			if (boss.tempBuff < 1) {
 				boss.setFortifiedStatus();
 				boss.setTempBuff(3);
 				break;
@@ -169,7 +169,7 @@ public class BattleManager {
 				TextUtils.slowPrint("O Chefe ataca com força demais e perde o equilíbrio.\r\n"
 						+ "Seu soco corta o ar e raspa no chão, abrindo uma brecha perigosa.", textSpeed);
 				TextUtils.slowPrint("P2 contra-ataca com precisão. \n", textSpeed);
-				boss.hp = player.getDamage();
+				boss.hp -= player.getDamage();
 
 			} else if (boss.hit >= player.defense) { // acerto comum
 				TextUtils.slowPrint("O Chefe golpeia o ombro de P2 — um golpe limpo, preciso.\r\n"
@@ -192,7 +192,7 @@ public class BattleManager {
 			} else if (boss.dodge == 1) { // erro critico
 				TextUtils.slowPrint("O Chefe tenta prever o movimento, mas se antecipa demais.\r\n"
 						+ "Perde o tempo — e o punho de P2 quase o atravessa.", textSpeed);
-				boss.hp = player.getDamage();
+				boss.hp -= player.getDamage();
 
 			} else if (boss.dodge > player.hit) { // acerto comum
 				TextUtils.slowPrint("Ele gira o corpo e o golpe passa de raspão.\r\n"

@@ -103,7 +103,7 @@ public class Enemy {
 		System.out.println("Recomendo que não me toque, P2.");
 	}
 
-	void setTempBuff(int tempbuff) {
+	void setTempBuff(int tempBuff) {
 		this.tempBuff = tempBuff;
 	}
 
