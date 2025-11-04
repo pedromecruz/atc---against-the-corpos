@@ -34,9 +34,8 @@ public class Puzzles {
 		TextUtils.slowPrint("Para estabilizar o sistema, P2 precisa calcular a energia total de um reator.\r\n"
 				+ "O terminal mostra:\r\n"
 				+ "“Três núcleos com potências crescentes — o segundo é o dobro do primeiro, e o terceiro é 3 unidades \n"
-				+ " acima do segundo. A soma deles é 33. Qual é o valor da potência do primeiro núcleo?”", textSpeed);
+				+ " acima do segundo. A soma deles é 33. Qual é o valor da potência do primeiro núcleo?”\n", textSpeed);
 
-		System.out.print("R: ");
 		number = 6;
 		return number;
 	}

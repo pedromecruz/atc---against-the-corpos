@@ -274,6 +274,7 @@ public class GameTexts {
 	public static String act2Route2Fail() {
 		return """
 
+				P2 erra a combinação e nada muda.
 				O mapa é um caos indecifrável.
 				Linhas piscando, setores em loop, alertas sobrepostos.
 

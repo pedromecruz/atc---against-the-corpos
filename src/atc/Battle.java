@@ -28,7 +28,7 @@ public class Battle {
 			playerTurn += 1;// no início do loop, o jogador pode agir
 
 			if (playerTurn > 0) {// TODO O LOOP DE AÇÃO DO JOGADOR
-				BattleManager.playerActionEchoBattle(player, echo, enemyTurn, input, tempHP, bossTempHP, textSpeed);
+				enemyTurn = BattleManager.playerActionEchoBattle(player, echo, enemyTurn, input, tempHP, bossTempHP, textSpeed);
 
 			} else {
 				System.out.println("P2 está se recuperando. Não agirá neste turno.");
@@ -40,7 +40,7 @@ public class Battle {
 			bossTempHP = echo.hp; // armazena a vida do inicio do turno inimigo
 
 			if (enemyTurn > 0) { // ação do chefe
-				BattleManager.echoAction(player, echo, tempBuff, enemyTurn, playerTurn, generator, bossTempHP,
+				playerTurn = BattleManager.echoAction(player, echo, tempBuff, enemyTurn, playerTurn, generator, bossTempHP,
 						bossTempHP, textSpeed);
 
 			} else { // chefe perdeu ação
@@ -97,7 +97,8 @@ public class Battle {
 				System.out.println("O Chefe está usando suas energias para se recuperar. \n" + " ");
 			}
 
-			System.out.println("P2 está com " + player.hp + " de vida.");
+			System.out.println("\n"
+					+ "P2 está com " + player.hp + " de vida.");
 			System.out.println("O Chefe está com " + boss.hp + " de vida. \n" + " ");
 
 			TextUtils.wait(3000);
@@ -109,7 +110,8 @@ public class Battle {
 			TextUtils.slowPrint(GameTexts.act5Final(), textSpeed);
 			System.exit(0);
 		} else {
-			TextUtils.slowPrint(GameTexts.act3Victory(), textSpeed);
+			TextUtils.slowPrint(GameTexts.act5BadFinal(), textSpeed);
+			System.exit(0);
 		}
 
 	}

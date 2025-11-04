@@ -30,7 +30,7 @@ public class Game {
 		GameConfigs.clearConsole();
 
 		// FIM DA CONFIGURACAO
-		
+
 		// TEXTO DE PROLOGO
 		TextUtils.slowPrint(GameTexts.prologue(), textSpeed);
 
@@ -40,8 +40,6 @@ public class Game {
 
 		TextUtils.wait(3000);
 		GameConfigs.clearConsole();
-
-	
 
 		// TEXTO DO ATO 1 - INTRO
 		TextUtils.slowPrint(GameTexts.act1Intro(), textSpeed);
@@ -66,8 +64,8 @@ public class Game {
 		tempo = Routes.act3ChooseRoute(tempo, input, option, player, textSpeed);
 		TextUtils.wait(3000);
 		GameConfigs.clearConsole();
-		
-		//TEXTO DO ATO 4
+
+		// TEXTO DO ATO 4
 		TextUtils.slowPrint(GameTexts.act4Intro(), textSpeed);
 		if (player.hp <= 50) {
 			TextUtils.slowPrint(GameTexts.act4LowHealth(), textSpeed);
@@ -76,14 +74,14 @@ public class Game {
 			TextUtils.slowPrint(GameTexts.act4ZeroTime(), textSpeed);
 		}
 		TextUtils.slowPrint(GameTexts.act4Choose(), textSpeed);
-		
-		//ESCOLHA DE ROTA ATO 4
+
+		// ESCOLHA DE ROTA ATO 4
 		tempo = Routes.act4ChooseRoute(tempo, input, option, player, textSpeed);
 		TextUtils.wait(3000);
 		GameConfigs.clearConsole();
-		
-		//ATO 5
-		Routes.act5(tempo, input, option, player, textSpeed);		
+
+		// ATO 5
+		Routes.act5(tempo, input, option, player, textSpeed);
 
 	}
 }

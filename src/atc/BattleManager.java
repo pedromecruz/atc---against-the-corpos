@@ -17,6 +17,7 @@ public class BattleManager {
 		TextUtils.slowPrint("3. CONTRA-ATAQUE", textSpeed);
 		TextUtils.slowPrintInline("R: ", textSpeed);
 		int option = input.nextInt();
+		System.out.println("");
 
 		while (option < 1 || option > 3) {
 			TextUtils.slowPrint("Insira uma opção válida.", textSpeed);
@@ -250,6 +251,7 @@ public class BattleManager {
 		TextUtils.slowPrint("3. CONTRA-ATAQUE", textSpeed);
 		TextUtils.slowPrintInline("R: ", textSpeed);
 		int option = input.nextInt();
+		System.out.println("");
 
 		while (option < 1 || option > 3) {
 			TextUtils.slowPrint("Insira uma opção válida.", textSpeed);

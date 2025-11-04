@@ -41,9 +41,11 @@ public class GameConfigs {
 
 		System.out.println("Selecione a dificuldade: \n" + "Fácil \n" + "Normal \n" + "Dificil");
 		System.out.print("R: ");
-		String difficulty = input.nextLine().toUpperCase();
+		String difficulty = "";
 
 		while (tempo == 0) {
+			
+			difficulty = input.nextLine().toUpperCase();
 
 			if (difficulty.startsWith("F")) {
 				player.hp = 160; // mais vida de jogador

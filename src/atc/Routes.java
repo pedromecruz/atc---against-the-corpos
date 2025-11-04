@@ -87,6 +87,9 @@ public class Routes {
 		case 3:
 			TextUtils.slowPrint(GameTexts.act2Route3(), textSpeed);
 			number = Puzzles.puzzle2(textSpeed);
+			System.out.print("R: ");
+			answer = input.nextInt();
+
 			if (number == answer) {
 				TextUtils.slowPrint(GameTexts.act2Route2Success(), textSpeed);
 			} else {
@@ -104,7 +107,7 @@ public class Routes {
 		System.out.print("R: ");
 		option = input.nextInt();
 
-		while (option > 3 && option < 1) {
+		while (option > 2 && option < 1) {
 			System.out.println("Insira uma opção válida!");
 			System.out.print("R: ");
 			option = input.nextInt();
@@ -144,7 +147,6 @@ public class Routes {
 
 		case 1:
 			TextUtils.slowPrint(GameTexts.act4Route1(), textSpeed);
-			tempo -= 1;
 			break;
 
 		case 2:
@@ -166,8 +168,11 @@ public class Routes {
 
 	public static void act5(int tempo, Scanner input, int option, Player player, int textSpeed) {
 		TextUtils.slowPrint(GameTexts.act5Intro(), textSpeed);
+		
 		if (tempo <= 0) {
 			TextUtils.slowPrint(GameTexts.act5Route1(), textSpeed);
+			System.exit(0);
+			
 		} else {
 			TextUtils.slowPrint(GameTexts.act5Route2(), textSpeed);
 			Enemy boss = new Enemy(200);
@@ -176,9 +181,11 @@ public class Routes {
 
 		if (player.hp > 0) {
 			TextUtils.slowPrint(GameTexts.act5Final(), textSpeed);
+			
 		} else {
-
+			TextUtils.slowPrint(GameTexts.act5BadFinal(), textSpeed);
 		}
+		System.exit(0);
 
 	}
 
