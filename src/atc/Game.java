@@ -26,6 +26,7 @@ public class Game {
 
 		// SELECAO DE DIFICULDADE
 		tempo = GameConfigs.gameDifficulty(player, input, tempo);
+		TextUtils.wait(3000);
 		GameConfigs.clearConsole();
 
 		// FIM DA CONFIGURACAO

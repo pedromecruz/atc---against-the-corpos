@@ -224,13 +224,13 @@ public class GameTexts {
 				Talvez, com um RACIOCÍNIO COMPUTACIONAL, seja possível encontrar a rota ideal.
 
 				É possível seguir pelos dutos de ventilação, um caminho sem perigo algum, mas também sem praticidade ou velocidade,
-				pode tentar analisar os mapas e procurar um ideal, ou pode tentar forçar uma senha para abrir uma rota mais prática.
+				pode tentar analisar os mapas e procurar um ideal, ou pode tentar forçar o sistema para abrir uma rota prática.
 
 
 				ESCOLHA:
 				ROTA 1: Dutos de ventilação
 				ROTA 2: Analisar os mapas
-				ROTA 3: Forçar senha
+				ROTA 3: Forçar sistema
 				""";
 	}
 
@@ -292,10 +292,59 @@ public class GameTexts {
 	public static String act2Route3() {
 		return """
 
-				⚠️ Esta rota será detalhada futuramente.
-				P2 encontrará um método alternativo de locomoção, provavelmente envolvendo combate, infiltração avançada
-				ou um evento narrativo especial.
-				""";
+				Na tela, uma mensagem intermitente:
+
+				“Autenticação de acesso necessária. Resolva a sequência numérica.”
+
+				P2 se aproxima.
+				O sistema reconhece sua presença, ajusta a interface e projeta os dados em linhas tremeluzentes.
+
+				Ele sabe que o tempo é curto, mas o instinto fala mais alto:
+				se decifrar o enigma, poderá compreender a estrutura do prédio — e talvez, prever seus inimigos.
+
+				As variáveis aparecem no visor.
+				É hora de pensar.
+								""";
+	}
+
+	public static String act2Route3Success() {
+		return """
+				O terminal emite um clique seco — depois, silêncio.
+				As linhas de código congelam por um instante... e então se reorganizam sozinhas.
+
+				O visor muda de cor, revelando um mapa tridimensional do prédio.
+				Linhas brancas serpenteiam pelos andares, revelando passagens ocultas e rotas de manutenção.
+
+				“Acesso concedido. Módulo de navegação liberado.”
+
+				P2 observa o mapa se expandindo lentamente, como se o próprio prédio respirasse.
+
+				Agora ele entende a extensão do labirinto — e também percebe algo inquietante:
+				há corredores marcados que não deveriam existir.
+
+				O sistema mostra caminhos... e segredos.
+				E, por algum motivo, o nome ECHO-7 aparece gravado em vários pontos do mapa.
+								""";
+	}
+
+	public static String act2Route3Fail() {
+		return """
+				O visor pisca.
+				Linhas de código se embaralham, e o sistema emite um som estridente — como um grito digital.
+
+				“Sequência incorreta. Tentativa registrada.”
+
+				O painel se torna de cor cinza, e parte das informações do mapa desaparece antes mesmo de serem carregadas.
+
+				P2 tenta reconfigurar o acesso, mas o sistema o reconhece como intruso.
+
+				Por alguns segundos, uma frase aparece no canto inferior da tela:
+
+				“Observando você.”
+
+				Depois, tudo apaga.
+				O terminal fica mudo — e a sensação de estar sendo monitorado se torna quase física.
+								""";
 	}
 
 	// ====== INTRO ======
@@ -794,7 +843,7 @@ public class GameTexts {
 				O Chefe observava o corpo imóvel diante de si, o olhar frio, impassível.
 
 				Por um breve instante, ele pareceu hesitar.
-				Aquele ser diante dele era sua própria imagem, moldada em carne sintética, músculos precisos e uma mente construída a partir 
+				Aquele ser diante dele era sua própria imagem, moldada em carne sintética, músculos precisos e uma mente construída a partir
 				de fragmentos de sua própria consciência.
 				Era... ele mesmo. Uma cópia perfeita — imperfeita apenas pelo destino que o aguardava.
 
@@ -803,7 +852,7 @@ public class GameTexts {
 				Sua mão firme pousou sobre o pescoço de P2. Um único movimento. Rápido. Silencioso.
 				O som seco ecoou pelo laboratório.
 
-				P2 não teve tempo para sentir dor. Sua existência foi encerrada com a mesma frieza com que havia sido criada — e, em um gesto 
+				P2 não teve tempo para sentir dor. Sua existência foi encerrada com a mesma frieza com que havia sido criada — e, em um gesto
 				quase contraditório, o Chefe acreditou ter lhe feito um favor.
 
 				“Não há sentido em lhe dar respostas, cópia.”
@@ -817,7 +866,7 @@ public class GameTexts {
 				Havia tantas corporações, tantos grupos famintos por poder, por controle... e agora, sabiam de sua maior fraqueza:
 				a própria imagem.
 
-				“Demônios!" 
+				“Demônios!"
 
 				O Chefe cerrou os punhos. O sangue escorreu por entre os dedos.
 				A ideia de ser multiplicado — reduzido a uma cópia, a uma ferramenta — o consumia.
@@ -838,7 +887,7 @@ public class GameTexts {
 
 				E, no fundo, ele sabia:
 				em algum momento, um deles o mataria também.
-				
+
 				[FINAL 3 — O Chefe vive. P2 é eliminado.]
 
 				""";
