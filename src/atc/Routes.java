@@ -176,6 +176,7 @@ public class Routes {
 		} else {
 			TextUtils.slowPrint(GameTexts.act5Route2(), textSpeed);
 			Enemy boss = new Enemy(200);
+			boss.defense = 14;
 			Battle.bossBattle(player, boss, input, textSpeed);
 		}
 

@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class GameConfigs {
 
 	GameConfigs() {
-
 	}
 
 	public static int gameSpeed(int textSpeed, Scanner input) {
@@ -45,7 +44,7 @@ public class GameConfigs {
 		String difficulty = null;
 
 		while (difficulty == null) {
-	
+
 			String response = input.nextLine().toUpperCase();
 
 			if (response.startsWith("F")) {
@@ -75,11 +74,12 @@ public class GameConfigs {
 	}
 
 	public static void selectPlayerClass(Player player, Scanner input) {
-		System.out.print("R: ");
-		String playerClass = input.nextLine().toUpperCase();
+		String playerClass;
 
 		do {
-
+			System.out.print("R: ");
+			playerClass = input.nextLine().toUpperCase();
+			
 			if (playerClass.startsWith("V")) {
 				player.playerClass = "Velocidade";
 				player.setPlayerClass("Velocidade");
@@ -95,8 +95,6 @@ public class GameConfigs {
 
 			} else {
 				System.out.println("Insira uma opção válida!");
-				System.out.print("R: ");
-				playerClass = input.nextLine().toUpperCase();
 			}
 
 		} while (!playerClass.startsWith("V") && !playerClass.startsWith("F") && !playerClass.startsWith("I"));
